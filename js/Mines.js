@@ -1,3 +1,5 @@
+'use strict';
+
 function setMinesNegsCount(mine) {
     for (var i = 0; i < gSize; i++) {
         for (var j = 0; j < gSize; j++) {

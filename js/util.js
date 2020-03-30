@@ -1,12 +1,4 @@
-function time() {
-    var timer = document.querySelector('.timer p')
-    gInterval = setInterval(function () {
-      gTime++;
-      timer.innerHTML = (gTime);
-    }, 1000);
-}
-
-
+'use strict';
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));

@@ -1,3 +1,5 @@
+'use strict';
+
 function win() {
     for (var i = 0; i < gSize; i++) {
         for (var j = 0; j < gSize; j++) {
@@ -13,19 +15,24 @@ function win() {
 
 
 function lose() {
-    for (var i = 0; i < gSize; i++) {
-        for (var j = 0; j < gSize; j++) {
-            if (gMine[i][j].isMine) {
-                gMine[i][j].isShown = true
-                gSmiley.innerHTML = '😔'
+    if (gLives > 1) {
+        gLives--
+        document.getElementById(`Heart${gLives}`).remove()
+    } else {
+        for (var i = 0; i < gSize; i++) {
+            for (var j = 0; j < gSize; j++) {
+                if (gMine[i][j].isMine) {
+                    gMine[i][j].isShown = true
+                    gSmiley.innerHTML = '😔'
+                }
             }
         }
+        gLose.style.display = 'block';
     }
-    debugger
-    gLose.style.display = 'block';
 }
 
 
 function restart() {
+    clearInterval(gTimeInterval)
     init();
 }

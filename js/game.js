@@ -15,7 +15,7 @@ var gSmiley;
 var gWin;
 var gLose;
 var gTimer;
-
+var gLives = 3;
 
 
 function init() {
@@ -24,6 +24,7 @@ function init() {
     gTimer = document.querySelector('.timer p')
     gTimer.innerHTML = 0;
     gTime = 0
+    gLives = 3
 
     gBoard = document.querySelector('.mine')
     gSmiley = document.querySelector('.smiley')
@@ -36,9 +37,9 @@ function init() {
     isHint = false;
     firstClick = 0;
 
-    clearInterval(gTimeInterval)
     buildMine(gSize)
     createHint()
+    createHeart()
 }
 
 
@@ -52,6 +53,20 @@ function createHint() {
     var hintsStr = document.querySelector('.Hints')
     hintsStr.innerHTML = strHtml;
 }
+
+
+
+function createHeart() {
+    var strHtml = '';
+    for (var i = 0; i < 3; i++) {
+        strHtml += `<p class="heart" id="Heart${i}" >
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                   </p>`
+    }
+    var hintsStr = document.querySelector('.Hearts')
+    hintsStr.innerHTML = strHtml;
+}
+
 
 
 function renderBoard(board) {
